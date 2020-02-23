@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/semantic-ui-css@2.4.1/semantic.min.css"
+    />
+    <style>
+      body {
+        background-color: #000;
+      }
+      .spinner {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        border: 4px solid #fff;
+        border-top-color: #186aab;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-column items-center justify-center">
+      <div class="spinner mt5"></div>
+      <div class="mt5">
+        <button data-action="play" class="ui button">Play</button>
+        <button data-action="pause" class="ui button">Pause</button>
+        <button data-action="reverse" class="ui button">Reverse</button>
+        <button data-action="cancel" class="ui button">Cancel</button>
+      </div>
+      <div class="mt3">
+        <input type="range" min="0.5" max="3" id="speed" value="1" step="0.5" />
+      </div>
+      <div id="speedlabel" class="mt3 white">
+        1x
+      </div>
+    </div>
+    <script>
+      const spinner = document.querySelector(".spinner");
+      const spinnerAnimation = spinner.animate(
+        [{ transform: "rotate(0)" }, { transform: "rotate(359deg)" }],
+        { duration: 2000, iterations: Infinity }
+      );
+      document
+        .querySelectorAll(".ui.button")
+        .forEach(el =>
+          el.addEventListener("click", e =>
+            spinnerAnimation[e.target.getAttribute("data-action")]()
+          )
+        );
+      document.getElementById("speed").addEventListener("input", e => {
+        const val = e.target.value;
+        spinnerAnimation.playbackRate = +val;
+        speedlabel.innerText = `${val}x`;
+      });
+    </script>
+  </body>
+</html>

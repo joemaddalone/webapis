@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+      pre {
+        font-family: monospace;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex item-center justify-center pt4">
+      <pre>
+let device;
+connectButton.onclick = async () => {
+	device = await navigator.usb.requestDevice({
+		filters: [{ vendorId: 0x2fe3 }]
+	});
+
+	await device.open();
+	await device.selectConfiguration(1);
+	await device.claimInterface(0);
+	listen();
+};
+
+const listen = async () => {
+	const result = await device.transferIn(3, 64);
+	// blah, blah, bblah
+	}
+	listen();
+}
+		</pre
+      >
+    </div>
+  </body>
+</html>

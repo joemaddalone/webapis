@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bluetooth</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/semantic-ui-css@2.4.1/semantic.min.css"
+    />
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex justify-between ma3">
+      <div>
+        <h1>bluetooth</h1>
+      </div>
+      <div>
+        <button class="ui primary button" id="connect">Connect</button>
+        <button disabled class="ui negative button" id="disconnect">
+          Disconnect
+        </button>
+      </div>
+    </div>
+    <hr />
+    <div id="simple" class="transition hidden mt4">
+      <div class="ui container">
+        <div class="ui card inverted">
+          <div class="content">
+            <span>Button is: <span id="btn">RELEASED</span></span>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="content">
+            <button id="off" class="ui basic button inverted">
+              Off
+            </button>
+            <button
+              data-color="255,0,0"
+              class="ui red basic button color-button"
+            >
+              Red
+            </button>
+            <button
+              data-color="0,255,0"
+              id="green"
+              class="ui green basic button color-button"
+            >
+              Green
+            </button>
+            <button
+              data-color="0,0,255"
+              id="blue"
+              class="ui blue basic button color-button"
+            >
+              Blue
+            </button>
+          </div>
+        </div>
+        <div class="mt4">
+          <a class="white" href="https://developer.nordicsemi.com/thingy/52" target="_blank"> ➡️ a way better demo.</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

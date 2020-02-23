@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <style>
+      body {
+        background-color: #000;
+      }
+      .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex items-center justify-center mt3">
+      <div class="circle"></div>
+    </div>
+    <script>
+      const circle = document.querySelector(".circle");
+      circle.animate(
+        [
+          {
+            transform: "translateY(0)",
+            backgroundColor: 'blue',
+          },
+          {
+            transform: "translateY(400px)",
+            backgroundColor: 'red',
+          }
+        ],
+        {
+          duration: 1000,
+          iterations: Infinity,
+          direction: "alternate",
+          easing: "ease-in-out",
+          fill: "both"
+        }
+      );
+    </script>
+  </body>
+</html>

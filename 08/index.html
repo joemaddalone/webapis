@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/semantic-ui-css@2.4.1/semantic.min.css"
+    />
+    <style>
+      .frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        perspective: 100;
+      }
+
+      .buttons {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 33em;
+        margin-top: -4em;
+        margin-left: -16em;
+      }
+
+      .button {
+        float: left;
+        width: 4em;
+        height: 4em;
+        line-height: 4em;
+        text-align: center;
+        border-radius: 2em;
+        background-color: #333333;
+        color: #ccc;
+		transition: all 0.1s ease-in-out;
+      }
+
+      .button.pressed {
+        background-color: white;
+      }
+
+      .button--0.pressed {
+        background-color: green;
+      }
+
+      .button--1.pressed {
+        background-color: red;
+      }
+
+      .button--2.pressed {
+        background-color: blue;
+      }
+
+      .button--3.pressed {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="buttons">
+        <div class="button button--0">A</div>
+        <div class="button button--1">B</div>
+        <div class="button button--2">X</div>
+        <div class="button button--3">Y</div>
+        <div class="button button--4">LB</div>
+        <div class="button button--5">RB</div>
+        <div class="button button--6">LT</div>
+        <div class="button button--7">RT</div>
+        <div class="button button--8">SEL</div>
+        <div class="button button--9">START</div>
+        <div class="button button--10">L3</div>
+        <div class="button button--11">R3</div>
+        <div class="button button--12">UP</div>
+        <div class="button button--13">DOWN</div>
+        <div class="button button--14">LEFT</div>
+        <div class="button button--15">RIGHT</div>
+      </div>
+    </div>
+    <script>
+      // mostly lifted from https://codepen.io/weareindi/pen/KMMGrY
+      class JoyTest {
+        constructor() {
+          this.buttonsContainer = document.querySelectorAll(".buttons");
+          this.buttons = document.querySelectorAll(".button");
+
+          window.addEventListener("gamepadconnected", event => {
+            this.stateCheck();
+          });
+        }
+
+        stateCheck() {
+          window.requestAnimationFrame(() => {
+            this.gamepads = navigator.getGamepads();
+            this.gamepad = this.gamepads[0];
+            this.padStatus();
+            this.stateCheck();
+          });
+        }
+
+        padStatus() {
+          this.gamepad.buttons.forEach((button, index) => {
+            if (this.buttons[index]) {
+              this.buttons[index].classList.remove("pressed");
+              if (button.pressed) {
+                this.buttons[index].classList.add("pressed");
+              }
+            }
+          });
+
+          const x = this.gamepad.axes[0];
+          const y = this.gamepad.axes[1];
+
+          this.buttonsContainer[0].style.transform = `translate(${x * 3}em, ${y *
+            3}em)`;
+        }
+      }
+
+      new JoyTest();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4/css/tachyons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/semantic-ui-css@2.4.1/semantic.min.css"
+    />
+    <style>
+      body {
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-column items-center justify-center white">
+		<div class="mt4">
+			<h1>:(</h1>
+		</div>
+		<div class="mt4">
+		<a target="_blank" href="https://twitter.com/Mandy_Kerr/status/1161945333988937729">but there is hope...</a>
+	</div>  
+    </div>
+    <script>
+	  const sensor = new AmbientLightSensor();
+	  console.log(sensor);
+      sensor.addEventListener("activate", () => console.log("activated!"));
+      sensor.addEventListener("error", error => console.error(error));
+      sensor.addEventListener("reading", e => console.error(e));
+    </script>
+  </body>
+</html>
